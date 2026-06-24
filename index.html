@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zanzibar — Jógový retreat</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F4EDDF; }
+
+:root {
+  --ink: #2E3A31;
+  --ink-soft: #46554A;
+  --cream: #F4EDDF;
+  --cream-2: #FBF7EE;
+  --sage: #9DAB8B;
+  --sage-deep: #6E7F66;
+  --terra: #C0694A;
+  --terra-deep: #A4543A;
+  --gold: #C49B49;
+  --sand: #E5D7BF;
+  --line: #D9CBB2;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Jost', 'Century Gothic', 'Segoe UI', sans-serif;
+}
+
+.page {
+  width: 1080px;
+  margin: 0 auto;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---------- shared ---------- */
+.section { padding: 76px 96px; position: relative; }
+.eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+.eyebrow.on-dark { color: var(--gold); }
+.h-display {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: 0.02em;
+}
+.section-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 56px;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.85;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+.center { text-align: center; }
+
+/* ornament divider */
+.ornament { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.ornament .ln { height: 1px; width: 70px; background: var(--gold); opacity: .7; }
+.ornament .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--terra); }
+.ornament svg { display: block; }
+
+/* ---------- HERO ---------- */
+.hero {
+  background: linear-gradient(180deg, rgba(34,44,38,0.78) 0%, rgba(34,44,38,0.85) 52%, rgba(27,36,31,0.93) 100%), url('img1.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  color: var(--cream);
+  padding: 104px 96px 96px;
+  position: relative;
+  overflow: hidden;
+}
+.hero .corner { position: absolute; opacity: .13; }
+.hero .corner.tl { top: -40px; left: -50px; transform: rotate(18deg); }
+.hero .corner.br { bottom: -60px; right: -50px; transform: rotate(-160deg); }
+.hero .frame {
+  position: absolute; inset: 30px;
+  border: 1px solid rgba(196,155,73,.35);
+  pointer-events: none;
+}
+.hero-inner { position: relative; text-align: center; }
+.hero .brand {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 138px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  margin: 18px 0 6px;
+  text-indent: 0.1em;
+}
+.hero .invite {
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.hero .sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 33px;
+  color: var(--sage);
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+.date-badge {
+  display: inline-flex; align-items: center; gap: 18px;
+  margin-top: 34px;
+  padding: 14px 34px;
+  border: 1px solid rgba(196,155,73,.55);
+  border-radius: 100px;
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  font-weight: 400;
+  color: var(--cream);
+}
+.date-badge .pin { width: 6px; height: 6px; border-radius: 50%; background: var(--terra); }
+.hero-copy {
+  max-width: 760px; margin: 40px auto 0;
+  font-size: 18px; line-height: 1.95; font-weight: 300;
+  color: rgba(244,237,223,.86);
+}
+.hero-copy p + p { margin-top: 16px; }
+
+/* ---------- ACCOMMODATION ---------- */
+.acc-grid { display: flex; gap: 30px; margin-top: 50px; }
+.acc-card {
+  flex: 1;
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 0 38px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -28px rgba(46,58,49,.4);
+}
+.acc-card .cap {
+  background: var(--sage-deep);
+  height: 8px;
+}
+.acc-card.alt .cap { background: var(--terra); }
+.acc-body { padding: 36px 38px 0; }
+.acc-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 38px;
+  color: var(--ink);
+  display: flex; align-items: baseline; gap: 10px;
+}
+.acc-price {
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--terra-deep);
+}
+.acc-card.alt .acc-price { color: var(--sage-deep); }
+.acc-price small { font-family: var(--sans); font-size: 15px; font-weight: 400; color: var(--ink-soft); letter-spacing: .04em; }
+.acc-rule { height: 1px; background: var(--line); margin: 22px 0; }
+.acc-desc { font-size: 17px; line-height: 1.75; color: var(--ink-soft); font-weight: 300; }
+
+/* ---------- INCLUDED / NOT ---------- */
+.incl { background: var(--cream-2); }
+.incl-grid { display: flex; gap: 30px; margin-top: 48px; }
+.incl-col {
+  flex: 1;
+  background: var(--cream);
+  border-radius: 6px;
+  padding: 40px 40px 44px;
+  border: 1px solid var(--line);
+}
+.incl-col.no { background: #F1E7DB; }
+.incl-head {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 26px;
+}
+.incl-col.no .incl-head { color: var(--terra-deep); }
+.incl-list { list-style: none; }
+.incl-list li {
+  display: flex; align-items: flex-start; gap: 15px;
+  font-size: 17.5px; line-height: 1.5; font-weight: 300;
+  color: var(--ink); padding: 11px 0;
+  border-bottom: 1px dashed rgba(157,171,139,.4);
+}
+.incl-col.no .incl-list li { border-bottom-color: rgba(192,105,74,.25); }
+.incl-list li:last-child { border-bottom: none; }
+.mark { flex: none; width: 24px; height: 24px; margin-top: 1px; }
+
+/* ---------- FLIGHTS ---------- */
+.flights { background: var(--sand); }
+.flights-box {
+  display: flex; align-items: center; gap: 40px;
+}
+.flights-icon {
+  flex: none; width: 96px; height: 96px; border-radius: 50%;
+  background: var(--cream); border: 1px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.flights-text { flex: 1; }
+.flights-text .ft-title {
+  font-family: var(--sans); font-weight: 600; font-size: 15px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink);
+  margin-bottom: 12px;
+}
+.flights-text p { font-size: 17.5px; line-height: 1.7; color: var(--ink-soft); font-weight: 300; }
+.cta {
+  flex: none;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--ink); color: var(--cream);
+  padding: 16px 30px; border-radius: 100px;
+  font-size: 16px; letter-spacing: 0.14em; text-transform: lowercase;
+  font-weight: 400; text-decoration: none;
+}
+.cta svg { display: block; }
+
+/* ---------- HOSTS ---------- */
+.hosts { background: var(--ink); color: var(--cream); }
+.hosts-row { display: flex; justify-content: center; gap: 90px; margin-top: 44px; }
+.host { text-align: center; }
+.host .host-photo {
+  width: 246px; height: 308px;
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(196,155,73,.55);
+  margin: 0 auto 22px;
+  box-shadow: 0 22px 46px -26px rgba(0,0,0,.6);
+}
+.host .host-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.host .hname {
+  font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--cream);
+}
+
+/* ---------- PROGRAM ---------- */
+.program-wrap { display: flex; gap: 40px; margin-top: 46px; align-items: stretch; }
+.program-main { flex: 1.7; }
+.program-main p { font-size: 18px; line-height: 1.9; color: var(--ink-soft); font-weight: 300; }
+.program-main p + p { margin-top: 20px; }
+.office {
+  flex: 1;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 6px;
+  padding: 38px 36px;
+  align-self: flex-start;
+}
+.office .oh {
+  font-family: var(--sans); font-weight: 500; font-size: 13px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 22px;
+}
+.office .dp-row { display: flex; align-items: center; gap: 15px; padding: 13px 0; border-bottom: 1px solid rgba(196,155,73,.2); }
+.office .dp-row:last-of-type { border-bottom: none; }
+.office .dp-ico { flex: none; width: 25px; height: 25px; }
+.office .od { font-family: var(--serif); font-size: 22px; color: var(--cream); line-height: 1.1; }
+.office .ot { font-size: 14px; color: var(--sage); letter-spacing: .02em; margin-top: 3px; line-height: 1.45; }
+.office .dp-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; padding: 15px 18px; background: rgba(196,155,73,.13); border: 1px solid rgba(196,155,73,.34); border-radius: 6px; }
+.office .dp-note svg { flex: none; width: 21px; height: 21px; margin-top: 1px; }
+.office .dp-note span { font-size: 14.5px; line-height: 1.55; color: #EADFC7; }
+.program-main .hl { color: var(--terra-deep); font-weight: 400; }
+
+/* ---------- BOOKING ---------- */
+.booking { background: var(--cream-2); }
+.steps { display: flex; gap: 26px; margin-top: 48px; }
+.step {
+  flex: 1; background: var(--cream); border: 1px solid var(--line);
+  border-radius: 6px; padding: 34px 30px; position: relative;
+}
+.step .num {
+  font-family: var(--serif); font-size: 30px; font-weight: 600;
+  color: var(--terra); margin-bottom: 14px;
+}
+.step .stitle {
+  font-family: var(--sans); font-weight: 600; font-size: 14px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-bottom: 12px;
+}
+.step p { font-size: 16px; line-height: 1.7; color: var(--ink-soft); font-weight: 300; }
+
+/* ---------- CONTACT ---------- */
+.contact { background: var(--ink); color: var(--cream); }
+.contact-grid { display: flex; gap: 70px; margin-top: 46px; align-items: flex-start; }
+.contact-l { flex: 1; }
+.contact-r { flex: 1; }
+.org-label {
+  font-size: 13px; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 14px;
+}
+.org-name {
+  font-family: var(--serif); font-size: 40px; font-weight: 500; color: var(--cream); line-height: 1.1;
+}
+.org-brand {
+  font-family: var(--sans); font-weight: 600; font-size: 17px;
+  letter-spacing: .3em; color: var(--gold); margin: 8px 0 26px;
+}
+.org-addr { font-size: 17px; line-height: 1.85; color: rgba(244,237,223,.8); font-weight: 300; }
+.contact-pills { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.pill {
+  display: inline-flex; align-items: center; gap: 12px;
+  border: 1px solid rgba(196,155,73,.5); border-radius: 100px;
+  padding: 12px 24px; color: var(--cream); text-decoration: none;
+  font-size: 17px; letter-spacing: .03em;
+}
+.pill svg { display: block; }
+.contact-r p { font-size: 18px; line-height: 1.9; color: rgba(244,237,223,.85); font-weight: 300; }
+.contact-r p + p { margin-top: 16px; }
+
+/* ---------- CAPACITY ---------- */
+.capacity { background: var(--sand); }
+.cap-box {
+  display: flex; align-items: center; gap: 36px;
+  background: var(--cream-2); border: 1px solid var(--line);
+  border-radius: 6px; padding: 44px 50px;
+}
+.cap-icon { flex: none; width: 88px; height: 88px; }
+.cap-box .ctitle {
+  font-family: var(--serif); font-size: 30px; font-weight: 600; color: var(--ink); margin-bottom: 10px;
+}
+.cap-box p { font-size: 17px; line-height: 1.75; color: var(--ink-soft); font-weight: 300; }
+
+/* ---------- CLOSING ---------- */
+.closing {
+  background: var(--ink); color: var(--cream);
+  text-align: center; padding: 88px 96px 76px; position: relative; overflow: hidden;
+}
+.closing .corner { position: absolute; opacity: .12; }
+.closing .corner.l { left: -40px; bottom: -50px; transform: rotate(40deg); }
+.closing .corner.r { right: -40px; top: -50px; transform: rotate(-150deg); }
+.closing .see { font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--sage); font-weight: 400; }
+.closing .names { font-family: var(--serif); font-size: 30px; color: var(--cream); margin-top: 6px; font-weight: 500; }
+.closing .namaste {
+  font-family: var(--serif); font-weight: 600; font-size: 96px;
+  letter-spacing: 0.22em; color: var(--gold); margin-top: 28px; text-indent: .22em;
+}
+.footer {
+  background: #26302A; color: var(--sage); text-align: center;
+  padding: 26px; font-size: 13px; letter-spacing: .28em; text-transform: uppercase;
+}
+
+/* ---------- PHOTOS ---------- */
+.acc-gallery {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.acc-gallery .gcell {
+  border-radius: 7px; overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 34px -28px rgba(46,58,49,.5);
+  aspect-ratio: 3 / 2;
+}
+.acc-gallery .gcell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.program-photo { flex: 0 0 300px; border-radius: 8px; overflow: hidden; }
+.program-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.program-col { flex: 1; display: flex; flex-direction: column; gap: 28px; }
+.program-col .office { align-self: stretch; }
+.contact-grid { gap: 44px; }
+.contact-photo { flex: 0 0 248px; border-radius: 8px; overflow: hidden; }
+.contact-photo img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+
+/* ---------- INTERACTIVITY ---------- */
+html { scroll-behavior: smooth; }
+
+.js .hero-inner > *,
+.js .section > .center,
+.js .acc-card,
+.js .acc-gallery .gcell,
+.js .incl-col,
+.js .flights-box,
+.js .host,
+.js .program-photo,
+.js .program-col,
+.js .step,
+.js .contact-photo,
+.js .contact-l,
+.js .contact-r,
+.js .cap-box,
+.js .closing > * {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.js .in { opacity: 1 !important; transform: none !important; }
+
+.acc-card, .step { transition: transform .4s ease, box-shadow .4s ease; }
+.acc-card:hover { transform: translateY(-7px); box-shadow: 0 34px 60px -30px rgba(46,58,49,.6); }
+.step:hover { transform: translateY(-5px); box-shadow: 0 28px 50px -32px rgba(46,58,49,.5); }
+
+.gcell img, .host-photo img { transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.gcell:hover img { transform: scale(1.07); }
+.host-photo:hover img { transform: scale(1.05); }
+
+.cta { transition: transform .3s ease, box-shadow .3s ease; }
+.cta:hover { transform: translateX(5px); box-shadow: 0 14px 26px -14px rgba(0,0,0,.45); }
+.cta svg { transition: transform .3s ease; }
+.cta:hover svg { transform: translateX(4px); }
+
+.pill { transition: background .3s ease, border-color .3s ease, transform .3s ease; }
+.pill:hover { background: rgba(196,155,73,.16); border-color: rgba(196,155,73,.85); transform: translateY(-2px); }
+
+.incl-list li { transition: color .25s ease; }
+.incl-col.yes .incl-list li:hover { color: var(--sage-deep); }
+.incl-col.no .incl-list li:hover { color: var(--terra-deep); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .hero-inner > *, .js .section > .center, .js .acc-card, .js .acc-gallery .gcell,
+  .js .incl-col, .js .flights-box, .js .host, .js .program-photo, .js .program-col,
+  .js .step, .js .contact-photo, .js .contact-l, .js .contact-r, .js .cap-box, .js .closing > * {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 820px) {
+  .page { width: 100%; }
+  .section { padding: 56px 30px; }
+  .hero { padding: 72px 30px 60px; }
+  .closing { padding: 64px 30px 56px; }
+  .hero .brand { font-size: 74px; letter-spacing: .06em; }
+  .hero .sub { font-size: 26px; }
+  .hero-copy { font-size: 16px; }
+  .date-badge { font-size: 18px; }
+  .section-title { font-size: 42px; }
+  .acc-grid, .incl-grid, .steps, .program-wrap, .contact-grid { flex-direction: column; }
+  .program-photo { flex: 0 0 auto; height: 280px; }
+  .contact-photo { flex: 0 0 auto; }
+  .contact-photo img { min-height: 300px; }
+  .acc-gallery { grid-template-columns: repeat(2, 1fr); }
+  .flights-box, .cap-box { flex-direction: column; text-align: center; }
+  .flights-box .cta { align-self: center; }
+  .hosts-row { gap: 48px; }
+  .closing .namaste { font-size: 60px; }
+}
+@media (max-width: 480px) {
+  .hero .brand { font-size: 52px; }
+  .invite { font-size: 12px; letter-spacing: .32em; }
+  .section-title { font-size: 32px; }
+  .acc-gallery { grid-template-columns: 1fr; }
+  .hosts-row { flex-direction: column; align-items: center; }
+  .host-photo { width: 70%; height: auto; aspect-ratio: 4/5; }
+  .closing .namaste { font-size: 44px; }
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="page" data-document-role="page" data-label="Zanzibar — jógový retreat">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="frame"></div>
+    <div class="hero-inner">
+      <div class="invite">Srdečně vás zveme na jógový retreat</div>
+      <div class="brand">ZANZIBAR</div>
+      <div class="sub">jóga · relaxace · cestování</div>
+      <div class="date-badge"><span class="pin"></span>2.&nbsp;10.&nbsp;—&nbsp;11.&nbsp;10.&nbsp;2026<span class="pin"></span></div>
+      <div class="hero-copy">
+        <p>Dopřejte si čas jen pro sebe v exotickém ráji Indického oceánu. Čeká vás pobyt v butik resortu White Paradise Zanzibar, každodenní lekce jógy, odpočinek na bílých plážích, poznávání místní kultury a nezapomenutelné západy slunce.</p>
+        <p>Přijeďte načerpat novou energii, zpomalit a užít si jedinečné spojení jógy, relaxace a cestování.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOMMODATION -->
+  <section class="section">
+    <div class="center">
+      <div class="eyebrow">Kde budete bydlet</div>
+      <h2 class="section-title" style="margin-top:14px;">Ubytování</h2>
+      <div class="ornament" style="margin-top:18px;"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="acc-grid">
+      <div class="acc-card">
+        <div class="cap"></div>
+        <div class="acc-body">
+          <div class="acc-name">Ebony Studio</div>
+          <div class="acc-price">21 500 Kč <small>/ osoba</small></div>
+          <div class="acc-rule"></div>
+          <div class="acc-desc">Dvoulůžkové studio s klimatizací, vlastní koupelnou, Wi-Fi a terasou do tropické zahrady.</div>
+        </div>
+      </div>
+      <div class="acc-card alt">
+        <div class="cap"></div>
+        <div class="acc-body">
+          <div class="acc-name">Bungalow <span style="font-size:28px;">🏝️</span></div>
+          <div class="acc-price">25 500 Kč <small>/ osoba</small></div>
+          <div class="acc-rule"></div>
+          <div class="acc-desc">Prostorný dvoulůžkový bungalov s vlastní terasou, klimatizací, koupelnou a větším soukromím.</div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-gallery">
+      <div class="gcell"><img src="cell_4.jpg" alt="Obývací část pokoje"></div>
+      <div class="gcell"><img src="cell_3.jpg" alt="Ložnice s moskytiérou"></div>
+      <div class="gcell"><img src="cell_6.jpg" alt="Ložnice s baldachýnem"></div>
+      <div class="gcell"><img src="cell_2.jpg" alt="Bungalov v tropické zahradě"></div>
+      <div class="gcell"><img src="cell_5.jpg" alt="Terasa do tropické zahrady"></div>
+      <div class="gcell"><img src="cell_7.jpg" alt="Koupelna pokoje"></div>
+    </div>
+  </section>
+
+  <!-- INCLUDED / NOT INCLUDED -->
+  <section class="section incl">
+    <div class="center">
+      <div class="eyebrow">Co retreat zahrnuje</div>
+      <h2 class="section-title" style="margin-top:14px;">V ceně pobytu</h2>
+      <div class="ornament" style="margin-top:18px;"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="incl-grid">
+      <div class="incl-col yes">
+        <div class="incl-head">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Co je v ceně
+        </div>
+        <ul class="incl-list">
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>9 nocí v resortu White Paradise Zanzibar</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Snídaně po celou dobu pobytu</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Místní taxy a hotelové poplatky</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Ranní a večerní lekce jógy</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Retreatový program po dobu pobytu</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Organizační zajištění retreatu</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="2"><circle cx="12" cy="12" r="11" stroke="#9DAB8B" stroke-width="1"/><path d="M7 12.5l3.2 3.2L17 8.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Skupinová podpora před odjezdem</span></li>
+        </ul>
+      </div>
+      <div class="incl-col no">
+        <div class="incl-head">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+          Co není v ceně
+        </div>
+        <ul class="incl-list">
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Letenka na Zanzibar a zpět</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Turistické vízum do Tanzanie</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Povinné Zanzibar Insurance ZIC</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Cestovní pojištění a storno cesty</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Transfer z/na letiště</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Obědy, večeře a osobní útrata</span></li>
+          <li><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#A4543A" stroke-width="1.8"><circle cx="12" cy="12" r="11" stroke="#C0694A" stroke-width="1"/><path d="M8 8l8 8M16 8l-8 8" stroke-linecap="round"/></svg><span>Fakultativní výlety a masáže</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLIGHTS -->
+  <section class="section flights">
+    <div class="flights-box">
+      <div class="flights-icon">
+        <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.4"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="flights-text">
+        <div class="ft-title">Letenky</div>
+        <p>Letenky nejsou součástí ceny pobytu. Po potvrzení konání retreatu zašleme doporučené letecké spojení a kontakt na ověřenou letenkářku, která vám pomůže s rezervací.</p>
+      </div>
+      <a class="cta" href="#">mrkni tady <svg width="20" height="14" viewBox="0 0 24 16" fill="none" stroke="#F4EDDF" stroke-width="1.6"><path d="M2 8h19M15 2l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
+  <!-- HOSTS -->
+  <section class="section hosts">
+    <div class="center">
+      <div class="eyebrow on-dark">Provázet vás budou</div>
+      <div class="ornament" style="margin-top:20px;"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="hosts-row">
+      <div class="host">
+        <div class="host-photo"><img src="stepanka.png" alt="Štěpánka Janská" style="object-position:43% 42%;"></div>
+        <div class="hname">Štěpánka Janská</div>
+      </div>
+      <div class="host">
+        <div class="host-photo"><img src="misa.png" alt="Míša Strnadová" style="object-position:50% 22%;"></div>
+        <div class="hname">Míša Strnadová</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section class="section">
+    <div class="center">
+      <div class="eyebrow">Jak bude vypadat</div>
+      <h2 class="section-title" style="margin-top:14px;">Program retreatu</h2>
+      <div class="ornament" style="margin-top:18px;"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="program-wrap">
+      <div class="program-photo"><img src="img3.jpg" alt="Bazén a oceán v resortu White Paradise Zanzibar"></div>
+      <div class="program-col">
+        <div class="program-main">
+          <p>Každý den jsou připraveny dvě společné lekce – ranní a večerní. <span class="hl">Veškerý program je dobrovolný a je pouze na Vás, kterých aktivit se rozhodnete zúčastnit.</span></p>
+          <p>Kromě společného programu budete mít dostatek prostoru pro vlastní odpočinek, relaxaci, masáže, individuální výlety nebo objevování okolí. V průběhu pobytu bude také možnost navštívit safari. Retreat je koncipován tak, aby si každý mohl vytvořit program podle svých potřeb a najít ideální rovnováhu mezi společnými aktivitami a časem pro sebe.</p>
+        </div>
+        <div class="office">
+          <div class="oh">Orientační denní program</div>
+          <div class="dp-row">
+            <svg class="dp-ico" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M8 18a4 4 0 0 1 8 0"/><path d="M12 4.5V7M5.5 9.2l1.5 1.4M18.5 9.2l-1.5 1.4"/></svg>
+            <div><div class="od">Ráno</div><div class="ot">Společná lekce jógy</div></div>
+          </div>
+          <div class="dp-row">
+            <svg class="dp-ico" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.4" stroke-linecap="round"><path d="M2 8.5c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0"/><path d="M2 13c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0"/><path d="M2 17.5c2-1.7 4-1.7 6 0s4 1.7 6 0 4-1.7 6 0"/></svg>
+            <div><div class="od">Během dne</div><div class="ot">Volno — odpočinek, relaxace, masáže či výlety</div></div>
+          </div>
+          <div class="dp-row">
+            <svg class="dp-ico" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.4" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z"/></svg>
+            <div><div class="od">Večer</div><div class="ot">Společná lekce jógy</div></div>
+          </div>
+          <div class="dp-note"><svg viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.5" stroke-linejoin="round"><path d="M12 20s-6.5-4.2-6.5-9A3.2 3.2 0 0 1 12 9a3.2 3.2 0 0 1 6.5 2c0 4.8-6.5 9-6.5 9z"/></svg><span>Účast je zcela dobrovolná — vyberete si jen to, co vám udělá radost. Do ničeho vás nutit nebudeme.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section booking">
+    <div class="center">
+      <div class="eyebrow">Jak si zarezervovat</div>
+      <h2 class="section-title" style="margin-top:14px;">Rezervace a platební podmínky</h2>
+      <div class="ornament" style="margin-top:18px;"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <div class="stitle">Záloha 15 000 Kč</div>
+        <p>Pro potvrzení závazné rezervace je splatná záloha ve výši 15 000 Kč. Na základě přihlášky Vám bude vystavena zálohová faktura. Záloha slouží k rezervaci ubytování a zajištění programu.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div class="stitle">Doplatek</div>
+        <p>Doplatek ceny dle zvoleného pokoje je splatný 30 dní před odletem.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div class="stitle">Storno</div>
+        <p>V případě zrušení účasti je záloha nevratná. Pokud však za sebe zajistíte náhradníka, bude Vám záloha vrácena v plné výši.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact">
+    <div class="contact-grid">
+      <div class="contact-photo"><img src="img2.jpg" alt="Uvítací brána resortu White Paradise Zanzibar"></div>
+      <div class="contact-l">
+        <div class="org-label">Komunitní travel experience organizuje</div>
+        <div class="org-name">Štěpánka Janská</div>
+        <div class="org-brand">YOGASEE.CZ</div>
+        <div class="org-addr">Anýžova 449/8<br>268 01 Hořovice<br>IČO: 00907952</div>
+        <div class="contact-pills">
+          <a class="pill" href="tel:+420739916250"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.6"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke-linejoin="round"/></svg>+420 739 916 250</a>
+          <a class="pill" href="mailto:yogasee.cz@email.cz"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C49B49" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6" stroke-linecap="round"/></svg>yogasee.cz@email.cz</a>
+        </div>
+      </div>
+      <div class="contact-r">
+        <p>V případě zájmu o rezervaci místa nebo více informací mě neváhejte kontaktovat telefonicky nebo e-mailem.</p>
+        <p>Po potvrzení zájmu vám budou předány informace k rezervaci a uhrazení organizační zálohy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACITY -->
+  <section class="section capacity">
+    <div class="cap-box">
+      <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="#6E7F66" stroke-width="1.3"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.6"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5M14.5 18c.2-2.4 2-4 4-4 1.4 0 2.7.7 3.5 1.9" stroke-linecap="round"/></svg>
+      <div>
+        <div class="ctitle">Minimální kapacita retreatu</div>
+        <p>Minimální počet účastníků pro uskutečnění retreatu je 8 osob (bez započítání lektorek). V případě nenaplnění minimální kapacity si vyhrazujeme právo retreat zrušit V takovém případě budou všechny již uhrazené platby vráceny v plné výši.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <svg class="corner l" width="300" height="300" viewBox="0 0 120 200" fill="none" stroke="#9DAB8B" stroke-width="1.3"><path d="M60 4 C26 52 22 150 60 196 C98 150 94 52 60 4 Z"/><line x1="60" y1="16" x2="60" y2="186"/><path d="M60 50 L30 40 M60 70 L32 64 M60 92 L30 90 M60 116 L33 120 M60 140 L34 148 M60 50 L90 40 M60 70 L88 64 M60 92 L90 90 M60 116 L87 120 M60 140 L86 148"/></svg>
+    <svg class="corner r" width="300" height="300" viewBox="0 0 120 200" fill="none" stroke="#9DAB8B" stroke-width="1.3"><path d="M60 4 C26 52 22 150 60 196 C98 150 94 52 60 4 Z"/><line x1="60" y1="16" x2="60" y2="186"/><path d="M60 50 L30 40 M60 70 L32 64 M60 92 L30 90 M60 116 L33 120 M60 140 L34 148 M60 50 L90 40 M60 70 L88 64 M60 92 L90 90 M60 116 L87 120 M60 140 L86 148"/></svg>
+    <div class="see">Těšíme se na Tebe</div>
+    <div class="names">Štěpánka a Míša</div>
+    <div class="namaste">NAMASTE</div>
+  </section>
+
+  <div class="footer">Zanzibar · Jógový retreat · 2026</div>
+
+</div>
+
+<script>
+(function () {
+  var sel = '.hero-inner > *, .section > .center, .acc-card, .acc-gallery .gcell, .incl-col, .flights-box, .host, .program-photo, .program-col, .step, .contact-photo, .contact-l, .contact-r, .cap-box, .closing > *';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
